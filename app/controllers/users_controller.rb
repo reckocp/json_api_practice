@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = get_user
   end
 
   def new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = get_user
   end
 
   def update
@@ -25,11 +25,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = get_user
     @user.destroy
   end
 
 private
+  def get_user
+    User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name)
