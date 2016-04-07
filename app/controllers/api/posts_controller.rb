@@ -1,4 +1,5 @@
 class Api::PostsController < ApplicationController
+  protect_from_forgery with: :null_session
   respond_to :json
 
   def index
@@ -28,6 +29,7 @@ class Api::PostsController < ApplicationController
   end
 
   def update
+    @post = get_post
     @post.update(post_params)
 
     respond_with @post

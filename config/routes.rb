@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
- resources :post
- resources :user
+resources :users
+resources :posts
+
 
   namespace :api do
-   resources :posts
    resources :users
+   resources :posts
   end
 end
