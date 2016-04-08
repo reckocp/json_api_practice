@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = get_user
-    respond_with @user
+    respond_with @user, :include => :posts
   rescue ActiveRecord::RecordNotFound
     error_not_found
   end
